@@ -19,7 +19,7 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am a 3rd year Ph.D. student in the Computer Science department at the University of Pittsburgh working with Dr. Erin Walker in [FACET Lab](https://www.facetlab.pitt.edu/). My research interests lie at the intersection of Human-Computer Interaction and Natural Langauge Processing and am particularly interested in building conversational educational robots to enhance learning experience for students.
+I am a 3rd year Ph.D. student in the Computer Science department at the University of Pittsburgh working with Dr. Erin Walker in [FACET Lab](https://www.facetlab.pitt.edu/). My research interests lie at the intersection of Human-Computer Interaction, Natural Language Processing, and Multimodal Machine Learning particularly focusing on building educational technologies to help learners navigate through open-ended learning environments. I am interested in modeling learner behaviors during their multimodal interactions with educational systems and then utilizing these models to support varied learner dialogue interactions within the systems.
 
 Prior to this, I was working as a Software Engineer in EC2 Enterprise team at Amazon Web Services, Seattle, where I worked on building services and SDKs to help enterprise customers onboard new workloads on AWS.
 
