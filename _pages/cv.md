@@ -1,15 +1,11 @@
 ---
-# layout: cv
-layout: page
+layout: none
 permalink: /cv/
-# permalink: /assets/pdf/CV2.pdf
 title: CV
-redirect: /assets/pdf/CV2.pdf
 nav: true
 nav_order: 5
-# redirect: true
-cv_pdf: CV2.pdf
-description: Redirecting to the CV Pdf.
-# toc:
-#   sidebar: left
 ---
+
+<script>window.location.href='/assets/pdf/CV2.pdf';</script>
+<meta http-equiv="refresh" content="0;url=/assets/pdf/CV2.pdf">
+<a href="/assets/pdf/CV2.pdf">Click here if not redirected</a>
