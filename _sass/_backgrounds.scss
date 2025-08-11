@@ -1,0 +1,200 @@
+/*******************************************************************************
+ * Background Patterns and Textures
+ * Subtle, professional backgrounds for different sections
+ ******************************************************************************/
+
+/* Warm textured backgrounds like Mert's website */
+.warm-texture-light {
+  background-color: #faf8f3 !important;
+  background-image:
+    radial-gradient(circle at 25% 25%, rgba(255, 248, 220, 0.8) 0%, transparent 50%),
+    radial-gradient(circle at 75% 75%, rgba(255, 245, 238, 0.6) 0%, transparent 50%),
+    linear-gradient(45deg, transparent 30%, rgba(255, 250, 240, 0.3) 30%, rgba(255, 250, 240, 0.3) 70%, transparent 70%) !important;
+  background-size: 100px 100px, 150px 150px, 200px 200px !important;
+}
+
+.warm-texture-medium {
+  background-color: #f5f1e8 !important;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(255, 248, 220, 0.9) 0%, transparent 40%),
+    radial-gradient(circle at 80% 80%, rgba(255, 245, 238, 0.7) 0%, transparent 40%),
+    linear-gradient(30deg, transparent 25%, rgba(255, 250, 240, 0.4) 25%, rgba(255, 250, 240, 0.4) 75%, transparent 75%) !important;
+  background-size: 80px 80px, 120px 120px, 160px 160px !important;
+}
+
+/* Enhanced dot patterns with warm colors */
+.dot-pattern-warm {
+  background-image: radial-gradient(circle, #d4c4a8 1.5px, transparent 1.5px) !important;
+  background-size: 25px 25px !important;
+  background-color: #faf8f3 !important;
+  background-repeat: repeat !important;
+}
+
+.dot-pattern-warm-medium {
+  background-image: radial-gradient(circle, #c4b498 2px, transparent 2px) !important;
+  background-size: 30px 30px !important;
+  background-color: #f5f1e8 !important;
+  background-repeat: repeat !important;
+}
+
+/* Subtle dot pattern - very light */
+.dot-pattern-light {
+  background-image: radial-gradient(circle, #d4c4a8 1px, transparent 1px) !important;
+  background-size: 20px 20px !important;
+  background-color: #faf8f3 !important;
+  background-repeat: repeat !important;
+}
+
+/* Subtle dot pattern - medium */
+.dot-pattern-medium {
+  background-image: radial-gradient(circle, #c4b498 1.5px, transparent 1.5px) !important;
+  background-size: 25px 25px !important;
+  background-color: #f5f1e8 !important;
+  background-repeat: repeat !important;
+}
+
+/* Subtle geometric pattern with warm colors */
+.geometric-pattern {
+  background-image:
+    linear-gradient(30deg, #d4c4a8 12%, transparent 12.5%, transparent 87%, #d4c4a8 87.5%, #d4c4a8),
+    linear-gradient(150deg, #d4c4a8 12%, transparent 12.5%, transparent 87%, #d4c4a8 87.5%, #d4c4a8),
+    linear-gradient(30deg, #d4c4a8 12%, transparent 12.5%, transparent 87%, #d4c4a8 87.5%, #d4c4a8),
+    linear-gradient(150deg, #d4c4a8 12%, transparent 12.5%, transparent 87%, #d4c4a8 87.5%, #d4c4a8) !important;
+  background-size: 80px 140px !important;
+  background-position: 0 0, 0 0, 40px 70px, 40px 70px !important;
+  background-color: #faf8f3 !important;
+  background-repeat: repeat !important;
+}
+
+/* Subtle diagonal lines with warm colors */
+.diagonal-lines {
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 2px,
+    #d4c4a8 2px,
+    #d4c4a8 4px
+  ) !important;
+  background-color: #faf8f3 !important;
+  background-repeat: repeat !important;
+}
+
+/* Subtle noise texture with warm base */
+.noise-texture {
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E") !important;
+  background-color: #faf8f3 !important;
+  background-repeat: repeat !important;
+}
+
+/* Gradient backgrounds with warm tones */
+.gradient-bg-soft {
+  background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%) !important;
+}
+
+.gradient-bg-warm {
+  background: linear-gradient(135deg, #faf8f3 0%, #ede4d3 100%) !important;
+}
+
+.gradient-bg-cool {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e3f2fd 100%) !important;
+}
+
+/* Page backgrounds with warm textures */
+.page-bg-warm-dots {
+  background-image: radial-gradient(circle, #d4c4a8 1.5px, transparent 1.5px) !important;
+  background-size: 35px 35px !important;
+  background-color: #faf8f3 !important;
+  background-repeat: repeat !important;
+}
+
+.page-bg-warm-lines {
+  background-image: repeating-linear-gradient(
+    90deg,
+    transparent,
+    transparent 3px,
+    #d4c4a8 3px,
+    #d4c4a8 6px
+  ) !important;
+  background-color: #faf8f3 !important;
+  background-repeat: repeat !important;
+}
+
+.page-bg-warm-grid {
+  background-image:
+    linear-gradient(#d4c4a8 1px, transparent 1px),
+    linear-gradient(90deg, #d4c4a8 1px, transparent 1px) !important;
+  background-size: 25px 25px !important;
+  background-color: #faf8f3 !important;
+  background-repeat: repeat !important;
+}
+
+/* Section containers with enhanced styling */
+.section-container {
+  background: #ffffff !important;
+  border-radius: var(--global-border-radius) !important;
+  box-shadow: var(--global-card-shadow) !important;
+  padding: 2rem !important;
+  margin-bottom: var(--global-section-spacing) !important;
+  transition: var(--global-transition) !important;
+}
+
+.section-container:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* News section specific styling */
+.news-section {
+  background: #ffffff !important;
+  border-radius: var(--global-border-radius) !important;
+  box-shadow: var(--global-card-shadow) !important;
+  padding: 1.5rem !important;
+  border-bottom: 2px solid var(--global-theme-color) !important;
+  transition: all 0.3s ease !important;
+}
+
+.news-section:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Publications section specific styling */
+.publications-section {
+  background: #ffffff !important;
+  border-radius: var(--global-border-radius) !important;
+  box-shadow: var(--global-card-shadow) !important;
+  padding: 1.5rem !important;
+  border-bottom: 2px solid var(--global-theme-color) !important;
+  transition: all 0.3s ease !important;
+}
+
+.publications-section:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Profile section enhancement */
+.profile-section {
+  background: #ffffff !important;
+  border-radius: var(--global-border-radius) !important;
+  box-shadow: var(--global-card-shadow) !important;
+  padding: 2rem !important;
+  margin-bottom: var(--global-section-spacing) !important;
+  transition: all 0.3s ease !important;
+}
+
+.profile-section:hover {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .section-container,
+  .news-section,
+  .publications-section,
+  .profile-section {
+    padding: 1rem !important;
+    margin-bottom: 1.5rem !important;
+  }
+}

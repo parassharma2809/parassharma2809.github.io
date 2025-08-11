@@ -2,21 +2,43 @@
 layout: default
 ---
 <div class="post">
-  <header class="post-header">
+  <header class="post-header noise-texture" style="padding: 2.5rem; border-radius: 8px; margin-bottom: 3rem; background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.08%22/%3E%3C/svg%3E'); background-color: #faf8f3; text-align: center;">
     <h1 class="post-title">
       {% if site.title == 'blank' %}
-        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }}
-        {{ site.last_name }}
+        <span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}
       {% else %}
         {{ site.title }}
       {% endif %}
     </h1>
-    <p class="desc">{{ page.subtitle }}</p>
+    {% if page.subtitle %}
+      <p class="post-subtitle">{{ page.subtitle }}</p>
+    {% endif %}
+    {% if page.profile %}
+      {% if page.profile.address %}
+        <div class="profile">
+          {% if page.profile.address.city %}
+            <div class="address">
+              {{ page.profile.address.city }},
+            </div>
+          {% endif %}
+          {% if page.profile.address.region %}
+            <div class="address">
+              {{ page.profile.address.region }}
+            </div>
+          {% endif %}
+          {% if page.profile.address.country %}
+            <div class="address">
+              {{ page.profile.address.country }}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+    {% endif %}
   </header>
 
-  <article>
+  <article class="gradient-bg-soft" style="background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);">
     {% if page.profile %}
-      <div class="profile float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}">
+      <div class="profile profile-section float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}" style="background: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 2rem; margin-bottom: 2rem; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.08)'">
         {% if page.profile.image %}
           {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
           {% if page.profile.image_circular %}

@@ -1,9 +1,9 @@
-<div class="news">
+<div class="news news-section dot-pattern-warm" style="background-image: radial-gradient(circle, #d4c4a8 1.5px, transparent 1.5px); background-size: 25px 25px; background-color: #faf8f3; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 1.5rem; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.08)'">
   {% if site.news != blank %}
     {% assign news_size = site.news | size %}
     <div
       class="table-responsive news-container"
-      style="max-height: 300px; overflow-y: auto; border: 1px solid #e0e0e0; border-radius: 5px; padding: 15px;"
+      style="border-bottom: 2px solid #3498db; padding-bottom: 15px;"
     >
       <table class="table table-sm table-borderless">
         {% assign news = site.news | reverse %}
