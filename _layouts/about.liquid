@@ -13,27 +13,6 @@ layout: default
     {% if page.subtitle %}
       <p class="post-subtitle">{{ page.subtitle }}</p>
     {% endif %}
-    {% if page.profile %}
-      {% if page.profile.address %}
-        <div class="profile">
-          {% if page.profile.address.city %}
-            <div class="address">
-              {{ page.profile.address.city }},
-            </div>
-          {% endif %}
-          {% if page.profile.address.region %}
-            <div class="address">
-              {{ page.profile.address.region }}
-            </div>
-          {% endif %}
-          {% if page.profile.address.country %}
-            <div class="address">
-              {{ page.profile.address.country }}
-            </div>
-          {% endif %}
-        </div>
-      {% endif %}
-    {% endif %}
   </header>
 
   <article class="gradient-bg-soft" style="background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);">
@@ -54,8 +33,13 @@ layout: default
             cache_bust=true
           %}
         {% endif %}
-        {% if page.profile.more_info %}
-          <div class="more-info">{{ page.profile.more_info }}</div>
+        
+        <!-- Social icons moved here - right under the profile picture -->
+        {% if page.social %}
+          <div class="contact-icons" style="margin-top: 1.5rem; text-align: center; font-size: 1.5rem;">
+            {% include social.liquid %}
+          </div>
+          <div class="contact-note" style="margin-top: 1rem; font-style: italic; color: #666; text-align: center; font-size: 0.9rem;">{{ site.contact_note }}</div>
         {% endif %}
       </div>
     {% endif %}
@@ -87,15 +71,6 @@ layout: default
           <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
         </h2>
         {% include selected_papers.liquid %}
-      </div>
-    {% endif %}
-
-    <!-- Social -->
-    {% if page.social %}
-      <div class="social">
-        <div class="contact-icons">{% include social.liquid %}</div>
-
-        <div class="contact-note">{{ site.contact_note }}</div>
       </div>
     {% endif %}
 
