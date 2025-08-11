@@ -72,7 +72,6 @@
     z-index: $back-to-top-z-index;
   }
 }
-
 html[data-theme="dark"] {
   --global-bg-color: #1a1a1a;
   --global-code-bg-color: #2d3748;
@@ -155,3 +154,4 @@ html[data-theme-setting="light"] {
     display: block;
   }
 }
+

@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-<div class="post">
+<div class="post" style="max-width: 100%; padding: 0 2rem;">
   <header class="post-header noise-texture" style="padding: 2.5rem; border-radius: 8px; margin-bottom: 3rem; background-image: url('data:image/svg+xml,%3Csvg viewBox=%220 0 200 200%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.65%22 numOctaves=%223%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.08%22/%3E%3C/svg%3E'); background-color: #faf8f3; text-align: center;">
     <h1 class="post-title">
       {% if site.title == 'blank' %}
@@ -15,64 +15,68 @@ layout: default
     {% endif %}
   </header>
 
-  <article class="gradient-bg-soft" style="background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%);">
-    {% if page.profile %}
-      <div class="profile profile-section float-{% if page.profile.align == 'left' %}left{% else %}right{% endif %}" style="background: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 2rem; margin-bottom: 2rem; transition: all 0.3s ease;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.08)'">
-        {% if page.profile.image %}
-          {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
-          {% if page.profile.image_circular %}
-            {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
-          {% else %}
-            {% assign profile_image_class = 'img-fluid z-depth-1
+  <article class="gradient-bg-soft" style="background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%); max-width: 100%;">
+    <div style="display: flex; gap: 3rem; align-items: flex-start;">
+      {% if page.profile %}
+        <div class="profile profile-section" style="background: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 3rem; margin-bottom: 2rem; transition: all 0.3s ease; width: 500px; flex-shrink: 0;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.08)'">
+          {% if page.profile.image %}
+            {% assign profile_image_path = page.profile.image | prepend: 'assets/img/' %}
+            {% if page.profile.image_circular %}
+              {% assign profile_image_class = 'img-fluid z-depth-1 rounded-circle' %}
+            {% else %}
+              {% assign profile_image_class = 'img-fluid z-depth-1
       rounded' %}
+            {% endif %}
+            {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.5}}px, (min-width: 576px)
+      50vw, 95vw"{% endcapture %}
+            {%
+              include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
+              cache_bust=true
+            %}
           {% endif %}
-          {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.3}}px, (min-width: 576px)
-      30vw, 95vw"{% endcapture %}
-          {%
-            include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
-            cache_bust=true
-          %}
-        {% endif %}
-        
-        <!-- Social icons moved here - right under the profile picture -->
-        {% if page.social %}
-          <div class="contact-icons" style="margin-top: 1.5rem; text-align: center; font-size: 1.5rem;">
-            {% include social.liquid %}
+          
+          <!-- Social icons moved here - right under the profile picture -->
+          {% if page.social %}
+            <div class="contact-icons" style="margin-top: 2rem; text-align: center; font-size: 2.2rem;">
+              {% include social.liquid %}
+            </div>
+            <div class="contact-note" style="margin-top: 1.5rem; font-style: italic; color: #666; text-align: center; font-size: 1.2rem; line-height: 1.4;">{{ site.contact_note }}</div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      <div style="flex: 1; min-width: 0;">
+        <div class="clearfix" style="margin-left: 0; max-width: none; overflow: hidden;">{{ content }}</div>
+
+        <!-- News -->
+        {% if page.news and site.announcements.enabled %}
+          <div style="margin-top: 3rem; margin-left: 0; max-width: none; overflow: hidden;">
+            <h2>
+              <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
+            </h2>
+            {% include news.liquid limit=true %}
           </div>
-          <div class="contact-note" style="margin-top: 1rem; font-style: italic; color: #666; text-align: center; font-size: 0.9rem;">{{ site.contact_note }}</div>
+        {% endif %}
+
+        <!-- Latest posts -->
+        {% if site.latest_posts.enabled %}
+          <h2 style="margin-left: 0; max-width: none; overflow: hidden;">
+            <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
+          </h2>
+          {% include latest_posts.liquid %}
+        {% endif %}
+
+        <!-- Selected papers -->
+        {% if page.selected_papers %}
+          <div style="margin-top: 3rem; margin-left: 0; max-width: none; overflow: hidden;">
+            <h2>
+              <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
+            </h2>
+            {% include selected_papers.liquid %}
+          </div>
         {% endif %}
       </div>
-    {% endif %}
-
-    <div class="clearfix">{{ content }}</div>
-
-    <!-- News -->
-    {% if page.news and site.announcements.enabled %}
-      <div style="margin-top: 3rem;">
-        <h2>
-          <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
-        </h2>
-        {% include news.liquid limit=true %}
-      </div>
-    {% endif %}
-
-    <!-- Latest posts -->
-    {% if site.latest_posts.enabled %}
-      <h2>
-        <a href="{{ '/blog/' | relative_url }}" style="color: inherit">latest posts</a>
-      </h2>
-      {% include latest_posts.liquid %}
-    {% endif %}
-
-    <!-- Selected papers -->
-    {% if page.selected_papers %}
-      <div style="margin-top: 3rem;">
-        <h2>
-          <a href="{{ '/publications/' | relative_url }}" style="color: inherit">Selected Publications</a>
-        </h2>
-        {% include selected_papers.liquid %}
-      </div>
-    {% endif %}
+    </div>
 
     {% if site.newsletter.enabled and site.footer_fixed %}
       {% include scripts/newsletter.liquid center=true %}
