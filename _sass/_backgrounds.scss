@@ -158,6 +158,30 @@
   transform: translateY(-2px) !important;
 }
 
+/* Scrollable news widget styling */
+.news-widget-scrollable {
+  scrollbar-width: thin;
+  scrollbar-color: #3498db #f1f1f1;
+}
+
+.news-widget-scrollable::-webkit-scrollbar {
+  width: 8px;
+}
+
+.news-widget-scrollable::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.news-widget-scrollable::-webkit-scrollbar-thumb {
+  background: #3498db;
+  border-radius: 4px;
+}
+
+.news-widget-scrollable::-webkit-scrollbar-thumb:hover {
+  background: #2980b9;
+}
+
 /* Publications section specific styling */
 .publications-section {
   background: #ffffff !important;

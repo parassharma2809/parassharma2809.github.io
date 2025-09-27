@@ -53,7 +53,9 @@ layout: default
             <h2>
               <a href="{{ '/news/' | relative_url }}" style="color: inherit">News</a>
             </h2>
-            {% include news.liquid limit=true %}
+            <div class="news-widget-scrollable" style="max-height: 280px; overflow-y: auto; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); background-color: #faf8f3; border: 1px solid #e0e0e0;">
+              {% include news.liquid %}
+            </div>
           </div>
         {% endif %}
 
