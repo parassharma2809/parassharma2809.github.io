@@ -16,7 +16,7 @@ layout: default
   </header>
 
   <article class="gradient-bg-soft" style="background: linear-gradient(135deg, #faf8f3 0%, #f5f1e8 100%); max-width: 100%;">
-    <div style="display: flex; gap: 3rem; align-items: flex-start;">
+    <div class="about-content-wrapper" style="display: flex; gap: 3rem; align-items: flex-start;">
       {% if page.profile %}
         <div class="profile profile-section" style="background: #ffffff; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); padding: 3rem; margin-bottom: 2rem; transition: all 0.3s ease; width: 500px; flex-shrink: 0;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 4px 20px rgba(0,0,0,0.12)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 2px 10px rgba(0,0,0,0.08)'">
           {% if page.profile.image %}
@@ -27,8 +27,7 @@ layout: default
               {% assign profile_image_class = 'img-fluid z-depth-1
       rounded' %}
             {% endif %}
-            {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.5}}px, (min-width: 576px)
-      50vw, 95vw"{% endcapture %}
+            {% capture sizes %}(min-width: {{site.max_width}}) {{ site.max_width | minus: 30 | times: 0.5}}px, (min-width: 768px) 40vw, (min-width: 576px) 60vw, 90vw"{% endcapture %}
             {%
               include figure.liquid loading="eager" path=profile_image_path class=profile_image_class sizes=sizes alt=page.profile.image
               cache_bust=true

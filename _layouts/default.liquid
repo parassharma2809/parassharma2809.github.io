@@ -21,7 +21,7 @@
     {% include header.liquid %}
 
     <!-- Content -->
-    <div class="container-fluid mt-5" role="main" style="max-width: 100%; padding: 0 2rem;">
+    <div class="container-fluid mt-5" role="main" style="max-width: 100%; padding: 0 2rem;" id="main-content">
       {% if page.toc and page.toc.sidebar %}
         {% if page.toc.sidebar == 'right' %}
           <div class="row">
@@ -73,5 +73,7 @@
     {% include scripts/jekyll_tabs.liquid %}
     {% include scripts/back_to_top.liquid %}
     {% include scripts/search.liquid %}
+    {% include scripts/mobile.liquid %}
+    {% include scripts/image-optimization.liquid %}
   </body>
 </html>

@@ -1,0 +1,180 @@
+<!-- Mobile-specific JavaScript improvements -->
+<script>
+// Mobile navigation improvements
+document.addEventListener('DOMContentLoaded', function() {
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(event) {
+    const navbar = document.getElementById('navbarNav');
+    const toggler = document.querySelector('.navbar-toggler');
+    
+    if (navbar && navbar.classList.contains('show') && 
+        !navbar.contains(event.target) && 
+        !toggler.contains(event.target)) {
+      toggler.click();
+    }
+  });
+  
+  // Close mobile menu when clicking on a link
+  const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+  navLinks.forEach(link => {
+    link.addEventListener('click', function() {
+      const navbar = document.getElementById('navbarNav');
+      const toggler = document.querySelector('.navbar-toggler');
+      
+      if (navbar && navbar.classList.contains('show')) {
+        toggler.click();
+      }
+    });
+  });
+  
+  // Improve touch interactions
+  if ('ontouchstart' in window) {
+    // Add touch class to body for CSS targeting
+    document.body.classList.add('touch-device');
+    
+    // Improve button hover states on touch devices
+    const buttons = document.querySelectorAll('.btn, .nav-link, .navbar-toggler');
+    buttons.forEach(button => {
+      button.addEventListener('touchstart', function() {
+        this.classList.add('touch-active');
+      });
+      
+      button.addEventListener('touchend', function() {
+        setTimeout(() => {
+          this.classList.remove('touch-active');
+        }, 150);
+      });
+    });
+  }
+  
+  // Lazy load images for better mobile performance
+  if ('IntersectionObserver' in window) {
+    const imageObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          if (img.dataset.src) {
+            img.src = img.dataset.src;
+            img.removeAttribute('data-src');
+            observer.unobserve(img);
+          }
+        }
+      });
+    });
+    
+    const lazyImages = document.querySelectorAll('img[data-src]');
+    lazyImages.forEach(img => imageObserver.observe(img));
+  }
+  
+  // Improve form usability on mobile
+  const inputs = document.querySelectorAll('input, textarea, select');
+  inputs.forEach(input => {
+    // Prevent zoom on focus for iOS
+    if (input.type === 'text' || input.type === 'email' || input.type === 'tel' || input.type === 'url') {
+      input.addEventListener('focus', function() {
+        if (window.innerWidth < 768) {
+          const viewport = document.querySelector('meta[name="viewport"]');
+          if (viewport) {
+            viewport.content = 'width=device-width, initial-scale=1, maximum-scale=1';
+          }
+        }
+      });
+      
+      input.addEventListener('blur', function() {
+        if (window.innerWidth < 768) {
+          const viewport = document.querySelector('meta[name="viewport"]');
+          if (viewport) {
+            viewport.content = 'width=device-width, initial-scale=1';
+          }
+        }
+      });
+    }
+  });
+  
+  // Smooth scrolling for anchor links
+  const anchorLinks = document.querySelectorAll('a[href^="#"]');
+  anchorLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        e.preventDefault();
+        const offsetTop = targetElement.offsetTop - 80; // Account for fixed navbar
+        window.scrollTo({
+          top: offsetTop,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+  
+  // Improve dropdown behavior on mobile
+  const dropdowns = document.querySelectorAll('.dropdown');
+  dropdowns.forEach(dropdown => {
+    const toggle = dropdown.querySelector('.dropdown-toggle');
+    const menu = dropdown.querySelector('.dropdown-menu');
+    
+    if (toggle && menu) {
+      toggle.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Close other dropdowns
+        dropdowns.forEach(otherDropdown => {
+          if (otherDropdown !== dropdown) {
+            const otherMenu = otherDropdown.querySelector('.dropdown-menu');
+            if (otherMenu) {
+              otherMenu.classList.remove('show');
+            }
+          }
+        });
+        
+        // Toggle current dropdown
+        menu.classList.toggle('show');
+      });
+    }
+  });
+  
+  // Close dropdowns when clicking outside
+  document.addEventListener('click', function() {
+    const openDropdowns = document.querySelectorAll('.dropdown-menu.show');
+    openDropdowns.forEach(menu => {
+      menu.classList.remove('show');
+    });
+  });
+});
+
+// Add CSS for touch interactions
+const mobileStyles = `
+  .touch-device .btn:hover,
+  .touch-device .nav-link:hover,
+  .touch-device .navbar-toggler:hover {
+    transform: none;
+  }
+  
+  .touch-active {
+    background-color: var(--global-hover-color) !important;
+    color: var(--global-hover-text-color) !important;
+  }
+  
+  @media (max-width: 768px) {
+    .dropdown-menu.show {
+      display: block !important;
+      position: static !important;
+      float: none !important;
+      width: 100% !important;
+      margin-top: 0.125rem !important;
+      background-color: var(--global-bg-color) !important;
+      border: 1px solid var(--global-divider-color) !important;
+      box-shadow: none !important;
+    }
+  }
+`;
+
+// Inject mobile styles
+const styleSheet = document.createElement('style');
+styleSheet.textContent = mobileStyles;
+document.head.appendChild(styleSheet);
+</script>

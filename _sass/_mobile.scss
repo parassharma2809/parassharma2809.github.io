@@ -1,0 +1,189 @@
+/*******************************************************************************
+ * Mobile-specific styles and optimizations
+ ******************************************************************************/
+
+// Mobile-first approach with progressive enhancement
+@media (max-width: 768px) {
+  // Ensure proper touch targets
+  a, button, input, select, textarea {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  // Improve text readability
+  body {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+  
+  // Fix horizontal scrolling issues
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  // Improve navigation
+  .navbar-nav {
+    text-align: center;
+  }
+  
+  .navbar-nav .nav-item {
+    border-bottom: 1px solid var(--global-divider-color);
+  }
+  
+  .navbar-nav .nav-item:last-child {
+    border-bottom: none;
+  }
+  
+  // Fix profile section on mobile
+  .profile.profile-section {
+    order: -1; // Move profile to top on mobile
+  }
+  
+  // Improve card layouts
+  .card-deck {
+    display: block;
+  }
+  
+  .card-deck .card {
+    margin-bottom: 1rem;
+  }
+  
+  // Fix table responsiveness
+  .table-responsive {
+    border: none;
+  }
+  
+  // Improve form layouts
+  .form-group {
+    margin-bottom: 1rem;
+  }
+  
+  // Fix modal dialogs
+  .modal-dialog {
+    margin: 0.5rem;
+    max-width: calc(100% - 1rem);
+  }
+  
+  // Improve button groups
+  .btn-group-vertical .btn {
+    width: 100%;
+    margin-bottom: 0.25rem;
+  }
+  
+  // Fix image galleries
+  .gallery {
+    display: block;
+  }
+  
+  .gallery img {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+  
+  // Improve search functionality
+  .search-container {
+    width: 100%;
+    margin: 1rem 0;
+  }
+  
+  // Fix footer
+  footer {
+    text-align: center;
+    padding: 2rem 1rem;
+  }
+  
+  // Improve accessibility
+  .sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
+}
+
+// Very small screens
+@media (max-width: 480px) {
+  // Further reduce font sizes for very small screens
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.5rem; }
+  h3 { font-size: 1.25rem; }
+  h4 { font-size: 1.1rem; }
+  h5 { font-size: 1rem; }
+  h6 { font-size: 0.9rem; }
+  
+  // Reduce padding and margins
+  .container, .container-fluid {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  
+  // Improve button spacing
+  .btn-group .btn {
+    margin-bottom: 0.25rem;
+  }
+  
+  // Fix social icons
+  .social .contact-icons {
+    font-size: 1.5rem;
+  }
+  
+  .social .contact-icons a {
+    margin: 0 0.25rem;
+  }
+}
+
+// Landscape orientation on mobile
+@media (max-width: 768px) and (orientation: landscape) {
+  .navbar-collapse {
+    max-height: 50vh;
+    overflow-y: auto;
+  }
+  
+  .profile.profile-section {
+    width: 200px;
+    flex-shrink: 0;
+  }
+  
+  .about-content-wrapper {
+    flex-direction: row;
+  }
+}
+
+// High DPI displays
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .img-fluid {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+  }
+}
+
+// Dark mode mobile improvements
+@media (prefers-color-scheme: dark) and (max-width: 768px) {
+  .navbar-collapse {
+    background-color: var(--global-bg-color);
+    border-color: var(--global-divider-color);
+  }
+  
+  .card {
+    background-color: var(--global-card-bg-color);
+    border-color: var(--global-divider-color);
+  }
+}
+
+// Reduced motion preferences
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .profile.profile-section:hover {
+    transform: none !important;
+  }
+}
